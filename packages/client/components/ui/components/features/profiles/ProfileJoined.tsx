@@ -24,7 +24,10 @@ export function ProfileJoined(props: { user: User; member?: ServerMember }) {
       </Text>
       <Text>
         {dayjs(props.user.createdAt).format(
-          timeLocale()[1].formats.L?.replace("MM", "MMM"),
+          timeLocale()[1]
+            .formats.L?.replace("MM", "MMM")
+            .replaceAll("/", " ")
+            .replaceAll("-", " "),
         )}
       </Text>
       <Show when={props.member}>
@@ -34,7 +37,10 @@ export function ProfileJoined(props: { user: User; member?: ServerMember }) {
         </Text>
         <Text>
           {dayjs(props.member!.joinedAt).format(
-            timeLocale()[1].formats.L?.replace("MM", "MMM"),
+            timeLocale()[1]
+              .formats.L?.replace("MM", "MMM")
+              .replaceAll("/", " ")
+              .replaceAll("-", " "),
           )}
         </Text>
       </Show>
